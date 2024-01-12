@@ -6,6 +6,7 @@ import PokemonAdd from './pages/pokemon-add';
 import PokemonsDetail from './pages/pokemon-detail';
 import PokemonEdit from './pages/pokemon-edit';
 import PokemonList from './pages/Pokemon-list'; 
+import PrivateRoute from './PrivateRoute';
  
  
 const App: FunctionComponent = () => {   
@@ -19,12 +20,12 @@ const App: FunctionComponent = () => {
                     </div>
                 </nav>
                 <Switch>
-                    <Route exact path="/" component={PokemonList} />
-                    <Route exact path="/pokemons" component={PokemonList} />
+                    <PrivateRoute exact path="/" component={PokemonList} />
+                    <PrivateRoute exact path="/pokemons" component={PokemonList} />
                     <Route exact path="/login" component={Login} />
-                    <Route exact path="/pokemon/add" component={PokemonAdd} /> 
-                    <Route path="/pokemon/edit/:id" component={PokemonEdit} /> 
-                    <Route path="/pokemon/:id" component={PokemonsDetail} /> 
+                    <PrivateRoute exact path="/pokemon/add" component={PokemonAdd} /> 
+                    <PrivateRoute path="/pokemon/edit/:id" component={PokemonEdit} /> 
+                    <PrivateRoute path="/pokemon/:id" component={PokemonsDetail} /> 
                     <Route component={PageNotFound} />  
                 </Switch>
             </div> 
